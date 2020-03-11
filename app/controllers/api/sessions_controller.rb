@@ -3,14 +3,14 @@ class Api::SessionsController < ApplicationController
   end 
 
   def create 
-    @user = User.find_by_credantials(
-      sessions_params.username, 
-      sessions_params.password)
+    @user = User.find_by_credentials(
+      params[:user][:username], 
+      params[:user][:password])
 
     if @user.nil? 
       render json: 'wrong credentials'
     else 
-      render json: "welcome back #{@user.username}"
+      redirect_to "/api/users/#{@user.id}"
     end
   end 
 
@@ -19,9 +19,5 @@ class Api::SessionsController < ApplicationController
   end 
   
   private 
-
-  def sessions_params 
-    params.require(:user).permit(:username, :password)
-  end 
 
 end 
