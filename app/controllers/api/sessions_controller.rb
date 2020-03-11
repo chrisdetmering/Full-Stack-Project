@@ -18,7 +18,10 @@ class Api::SessionsController < ApplicationController
   def show
     @user = User.find(id: params[:id])
   end 
-  
-  private 
+
+  def destroy 
+    log_out!
+    redirect_to '/api/session/new'
+  end 
 
 end 
