@@ -10,6 +10,7 @@ class Api::SessionsController < ApplicationController
     if @user.nil? 
       render json: 'wrong credentials'
     else 
+      login!(@user)
       redirect_to "/api/users/#{@user.id}"
     end
   end 
