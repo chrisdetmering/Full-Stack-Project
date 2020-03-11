@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :todos, defaults: { format: :json }
     resources :steps, defaults: { format: :json }
     resources :users, only: [:create, :new]
+    resource :session, only: [:create, :new, :destroy]
   end 
 
 end
