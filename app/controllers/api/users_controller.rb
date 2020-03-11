@@ -1,7 +1,6 @@
 class Api::UsersController < ApplicationController
   def create
     @user = User.new(user_params)
-    @user.session_token = rand()
 
     if @user.save!
       render json: @user
