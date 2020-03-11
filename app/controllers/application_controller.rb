@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
   def require_current_user! 
     if current_user.nil? 
       redirect_to '/api/session/new'
-    elsif current_user.id != params[:id]
+    elsif "#{current_user.id}" != params[:id]
       render json: 'That is not your profile'
     end 
   end 

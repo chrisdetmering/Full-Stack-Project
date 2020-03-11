@@ -1,12 +1,12 @@
 class Api::UsersController < ApplicationController
-    before_action :require_current_user!, except: [:new, :create]
+    # before_action :require_current_user!, except: [:new, :create]
   
   def create
     @user = User.new(user_params)
 
     if @user.save!
       login!(@user)
-      redirect_to '/api/todos'
+      render json: @user
     else
       render json: @user.errors.full_messages
     end

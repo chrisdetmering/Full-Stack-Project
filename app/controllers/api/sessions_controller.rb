@@ -11,7 +11,7 @@ class Api::SessionsController < ApplicationController
       render json: 'wrong credentials'
     else 
       login!(@user)
-      redirect_to "/api/users/#{@user.id}"
+      render json: @user
     end
   end 
 
@@ -21,7 +21,7 @@ class Api::SessionsController < ApplicationController
 
   def destroy 
     log_out!
-    redirect_to '/api/session/new'
+    render json: 'logged out'
   end 
 
 end 
