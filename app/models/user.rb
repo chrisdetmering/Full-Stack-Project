@@ -5,6 +5,15 @@ class User < ApplicationRecord
   validates :password_digest, presence: { message: 'Password can\'t be blank' }
   validates :password, length: { minimum: 6, allow_nil: true }
   
+
+  def self.find_by_credential(username, password)
+    user = User.find_by(username: username)
+    return user if user.nil?
+    user.is_password?(password) ? user : nil
+  end 
+
+
+
   def password=(password)
     @password = password
     self.password_digest = BCrypt::Password.create(password)
