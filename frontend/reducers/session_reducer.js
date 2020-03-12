@@ -8,3 +8,6 @@ function sessionReducer(state = {}, action) {
       return Object.assign({}, state, action.session)
   }
 }
+
+
+export default sessionReducer;
