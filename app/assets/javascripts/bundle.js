@@ -314,7 +314,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _todos_todo_list_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./todos/todo_list_container */ "./frontend/components/todos/todo_list_container.js");
-/* harmony import */ var _login_logout_login__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./login_logout/login */ "./frontend/components/login_logout/login.jsx");
+/* harmony import */ var _login_logout_login_contrainer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./login_logout/login_contrainer */ "./frontend/components/login_logout/login_contrainer.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 
 
@@ -323,7 +323,7 @@ __webpack_require__.r(__webpack_exports__);
 var App = function App(props) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
     path: "/",
-    component: _login_logout_login__WEBPACK_IMPORTED_MODULE_2__["default"]
+    component: _login_logout_login_contrainer__WEBPACK_IMPORTED_MODULE_2__["default"]
   })));
 };
 
@@ -390,7 +390,17 @@ var Login = /*#__PURE__*/function (_React$Component) {
     }
   }, {
     key: "handleSubmit",
-    value: function handleSubmit(e) {}
+    value: function handleSubmit(e) {
+      e.preventDefault();
+      var user = this.state;
+      this.props.postSession(user).then(function (user) {
+        console.log(user);
+      });
+      this.setState({
+        username: "",
+        password: ""
+      });
+    }
   }, {
     key: "render",
     value: function render() {
@@ -417,6 +427,35 @@ var Login = /*#__PURE__*/function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (Login);
+
+/***/ }),
+
+/***/ "./frontend/components/login_logout/login_contrainer.js":
+/*!**************************************************************!*\
+  !*** ./frontend/components/login_logout/login_contrainer.js ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
+/* harmony import */ var _login__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./login */ "./frontend/components/login_logout/login.jsx");
+
+
+
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    postSession: function postSession(user) {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["postSession"])(user));
+    }
+  };
+};
+
+var LoginContainer = Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(null, mapDispatchToProps)(_login__WEBPACK_IMPORTED_MODULE_2__["default"]);
+/* harmony default export */ __webpack_exports__["default"] = (LoginContainer);
 
 /***/ }),
 

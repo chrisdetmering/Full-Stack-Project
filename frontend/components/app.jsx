@@ -1,6 +1,6 @@
 import React from 'react'
 import TodoListContainer from './todos/todo_list_container';
-import Login from './login_logout/login';
+import LoginContainer from './login_logout/login_contrainer';
 import {
   BrowserRouter as Router,
   Switch,
@@ -15,7 +15,7 @@ export const App = (props) => (
   
   <Router> 
     <Switch>
-      <Route path='/' component= { Login } />
+      <Route path='/' component= { LoginContainer } />
 
      
     </Switch>
