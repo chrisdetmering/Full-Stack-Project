@@ -3,7 +3,7 @@ export const RECEIVE_SESSION = "RECEIVE_SESSION";
 export const DELETE_SESSION = "DELETE_SESSION"; 
 
 
-export const receiveSession = (user) => (dispatch) => ( 
+export const postSession = (user) => (dispatch) => ( 
   SessionAPIUTil.postSession(user).then(
     (session) => dispatch(receiveSession(session))
   )

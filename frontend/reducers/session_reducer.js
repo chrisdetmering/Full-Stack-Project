@@ -6,6 +6,8 @@ function sessionReducer(state = {}, action) {
   switch(action.type) { 
     case RECEIVE_SESSION: 
       return Object.assign({}, state, action.session)
+    default: 
+      return state
   }
 }
 

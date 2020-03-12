@@ -115,6 +115,39 @@ var clearErrors = function clearErrors() {
 
 /***/ }),
 
+/***/ "./frontend/actions/session_actions.js":
+/*!*********************************************!*\
+  !*** ./frontend/actions/session_actions.js ***!
+  \*********************************************/
+/*! exports provided: RECEIVE_SESSION, DELETE_SESSION, postSession, receiveSession */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_SESSION", function() { return RECEIVE_SESSION; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DELETE_SESSION", function() { return DELETE_SESSION; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "postSession", function() { return postSession; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveSession", function() { return receiveSession; });
+/* harmony import */ var _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/session_api_util */ "./frontend/util/session_api_util.js");
+
+var RECEIVE_SESSION = "RECEIVE_SESSION";
+var DELETE_SESSION = "DELETE_SESSION";
+var postSession = function postSession(user) {
+  return function (dispatch) {
+    return _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__["postSession"](user).then(function (session) {
+      return dispatch(receiveSession(session));
+    });
+  };
+};
+var receiveSession = function receiveSession(session) {
+  return {
+    type: RECEIVE_SESSION,
+    session: session
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/actions/step_actions.js":
 /*!******************************************!*\
   !*** ./frontend/actions/step_actions.js ***!
@@ -357,7 +390,7 @@ var Login = /*#__PURE__*/function (_React$Component) {
     }
   }, {
     key: "handleSubmit",
-    value: function handleSubmit() {}
+    value: function handleSubmit(e) {}
   }, {
     key: "render",
     value: function render() {
@@ -1401,6 +1434,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _todo_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./todo_reducer */ "./frontend/reducers/todo_reducer.js");
 /* harmony import */ var _step_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./step_reducer */ "./frontend/reducers/step_reducer.js");
 /* harmony import */ var _error_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./error_reducer */ "./frontend/reducers/error_reducer.js");
+/* harmony import */ var _session_reducer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./session_reducer */ "./frontend/reducers/session_reducer.js");
+
 
 
 
@@ -1408,7 +1443,8 @@ __webpack_require__.r(__webpack_exports__);
 var rootReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
   todos: _todo_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
   steps: _step_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
-  errors: _error_reducer__WEBPACK_IMPORTED_MODULE_3__["default"]
+  errors: _error_reducer__WEBPACK_IMPORTED_MODULE_3__["default"],
+  session: _session_reducer__WEBPACK_IMPORTED_MODULE_4__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (rootReducer);
 
@@ -1438,6 +1474,36 @@ var stepsByTodoId = function stepsByTodoId(state, toDoId) {
   });
 };
 window.stepsByTodoId = stepsByTodoId;
+
+/***/ }),
+
+/***/ "./frontend/reducers/session_reducer.js":
+/*!**********************************************!*\
+  !*** ./frontend/reducers/session_reducer.js ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/session_actions */ "./frontend/actions/session_actions.js");
+
+
+function sessionReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_SESSION"]:
+      return Object.assign({}, state, action.session);
+
+    default:
+      return state;
+  }
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (sessionReducer);
 
 /***/ }),
 
@@ -1590,6 +1656,45 @@ window.addEventListener('DOMContentLoaded', function () {
     store: store
   }), root);
 });
+
+/***/ }),
+
+/***/ "./frontend/util/session_api_util.js":
+/*!*******************************************!*\
+  !*** ./frontend/util/session_api_util.js ***!
+  \*******************************************/
+/*! exports provided: postUser, postSession, deleteSession */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "postUser", function() { return postUser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "postSession", function() { return postSession; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteSession", function() { return deleteSession; });
+var postUser = function postUser(user) {
+  return $.ajax({
+    url: 'api/users',
+    method: 'post',
+    data: {
+      user: user
+    }
+  });
+};
+var postSession = function postSession(user) {
+  return $.ajax({
+    url: "api/session",
+    method: 'post',
+    data: {
+      user: user
+    }
+  });
+};
+var deleteSession = function deleteSession() {
+  return $.ajax({
+    url: 'api/session',
+    method: 'delete'
+  });
+};
 
 /***/ }),
 
