@@ -11,7 +11,7 @@ class Api::SessionsController < ApplicationController
       render json: 'wrong credentials'
     else 
       login!(@user)
-      render json: @user
+      render :show
     end
   end 
 
