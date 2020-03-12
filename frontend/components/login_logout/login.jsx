@@ -7,19 +7,29 @@ class Login extends React.Component {
 
     this.state = { username: "", password: ""}
 
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this); 
+    this.updateProps = this.updateProps.bind(this); 
   }
 
-  handleSubmit() { 
+  updateProps(e) { 
+    e.preventDefault();
+    var key = e.target.name; 
+    var value = e.target.value; 
+    this.setState({ [key]: value })
+   
+  }
 
+
+  handleSubmit() { 
+      
   }
 
 
   render() { 
     return (<div>
       <form onSubmit={this.handleSubmit}>
-        <input type="text" name="login_username"/>
-        <input type="password" name="login_password"/>
+        <input type="text" name="username" onChange={this.updateProps} value={this.state.username}/>
+        <input type="password" name="password" onChange={this.updateProps} value={this.state.password}/>
         <input type="submit" value="Login"/>
       </form>
 
