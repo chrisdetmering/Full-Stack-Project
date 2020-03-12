@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
-import { postSession } from '../../actions/session_actions'
+import { loginUser } from '../../actions/session_actions'
 import Login from './login'
 
 const mapDispatchToProps = dispatch => ({
-  postSession: (user) => dispatch(postSession(user))
+  loginUser: (user) => dispatch(loginUser(user))
 })
 const LoginContainer = connect(null, mapDispatchToProps)(Login)
 

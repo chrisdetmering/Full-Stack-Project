@@ -1,11 +1,11 @@
-import { RECEIVE_SESSION, DELETE_SESSION } from '../actions/session_actions';
+import { RECEIVE_CURRENT_USER, DELETE_SESSION } from '../actions/session_actions';
 
 
 function sessionReducer(state = {}, action) { 
   Object.freeze(state)
   switch(action.type) { 
-    case RECEIVE_SESSION: 
-      return Object.assign({}, state, action.session)
+    case RECEIVE_CURRENT_USER: 
+      return Object.assign({}, state, action.user)
     default: 
       return state
   }

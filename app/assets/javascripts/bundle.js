@@ -119,30 +119,30 @@ var clearErrors = function clearErrors() {
 /*!*********************************************!*\
   !*** ./frontend/actions/session_actions.js ***!
   \*********************************************/
-/*! exports provided: RECEIVE_SESSION, DELETE_SESSION, postSession, receiveSession */
+/*! exports provided: RECEIVE_CURRENT_USER, DELETE_SESSION, receiveCurrentUser, loginUser */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_SESSION", function() { return RECEIVE_SESSION; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_CURRENT_USER", function() { return RECEIVE_CURRENT_USER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DELETE_SESSION", function() { return DELETE_SESSION; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "postSession", function() { return postSession; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveSession", function() { return receiveSession; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveCurrentUser", function() { return receiveCurrentUser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "loginUser", function() { return loginUser; });
 /* harmony import */ var _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/session_api_util */ "./frontend/util/session_api_util.js");
 
-var RECEIVE_SESSION = "RECEIVE_SESSION";
+var RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 var DELETE_SESSION = "DELETE_SESSION";
-var postSession = function postSession(user) {
-  return function (dispatch) {
-    return _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__["postSession"](user).then(function (session) {
-      return dispatch(receiveSession(session));
-    });
+var receiveCurrentUser = function receiveCurrentUser(user) {
+  return {
+    type: RECEIVE_CURRENT_USER,
+    user: user
   };
 };
-var receiveSession = function receiveSession(session) {
-  return {
-    type: RECEIVE_SESSION,
-    session: session
+var loginUser = function loginUser(user) {
+  return function (dispatch) {
+    return _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__["postSession"](user).then(function (session) {
+      return dispatch(receiveCurrentUser(session));
+    });
   };
 };
 
@@ -393,7 +393,7 @@ var Login = /*#__PURE__*/function (_React$Component) {
     value: function handleSubmit(e) {
       e.preventDefault();
       var user = this.state;
-      this.props.postSession(user).then(function (user) {
+      this.props.loginUser(user).then(function (user) {
         console.log(user);
       });
       this.setState({
@@ -448,8 +448,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    postSession: function postSession(user) {
-      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["postSession"])(user));
+    loginUser: function loginUser(user) {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["loginUser"])(user));
     }
   };
 };
@@ -1534,8 +1534,8 @@ function sessionReducer() {
   Object.freeze(state);
 
   switch (action.type) {
-    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_SESSION"]:
-      return Object.assign({}, state, action.session);
+    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:
+      return Object.assign({}, state, action.user);
 
     default:
       return state;
