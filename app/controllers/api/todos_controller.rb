@@ -2,7 +2,7 @@ class Api::TodosController < ApplicationController
   
   def index 
     @todos = Todo.all 
-    render json: @todos, include: :tags
+    render :index
   end 
 
   def create 
