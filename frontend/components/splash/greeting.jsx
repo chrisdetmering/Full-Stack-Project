@@ -1,4 +1,10 @@
 import React from 'react';
+import {
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
 
 class Greeting extends React.Component { 
   constructor(props) { 
@@ -6,10 +12,16 @@ class Greeting extends React.Component {
   }
 
   render() { 
+    var splash; 
     const loggedIn = this.props.currentUser
-
+    
+    splash = !loggedIn ? 'not logged in' : "loggedin"
+    
     return (
-      <div>Greeting</div>
+
+      
+
+      <div>{splash}</div>
     )
   }
 

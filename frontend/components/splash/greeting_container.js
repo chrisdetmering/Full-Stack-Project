@@ -10,7 +10,6 @@ const mapStateToProps = (state) => ({
   currentUser: state.entities.user[state.session.currentUser]
 })
 
-
 const GreetingContainer = connect(
   mapStateToProps,
   mapDispatchToprops)(Greeting);
