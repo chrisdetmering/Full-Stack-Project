@@ -13,6 +13,7 @@ export const App = (props) => (
     <Switch>
       <Route path='/users/new' component= { SignUp } />
       <Route path='/session/new' component= { LoginContainer } />
+      <Route path='/todos' component={TodoListContainer} />
     </Switch>
 
 );

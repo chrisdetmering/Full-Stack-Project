@@ -9,5 +9,4 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :new, :destroy]
   end 
 
-  match '*path', to: 'static_pages#root', via: :all
 end

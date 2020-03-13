@@ -21,6 +21,7 @@ class Login extends React.Component {
   handleSubmit(e) { 
     e.preventDefault();
     var user = this.state
+      console.log(user)
     this.props.loginUser(user).then(
       user => { console.log(user) }
     ); 
