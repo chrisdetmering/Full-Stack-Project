@@ -6,7 +6,8 @@ class SignUp extends React.Component {
   }
 
   render() { 
-    return( 
+    return( <div>
+      <h1>Signup</h1>
       <form>
         <label htmlFor="username">
           Username
@@ -18,7 +19,9 @@ class SignUp extends React.Component {
         </label>
 
         <input type="submit" value="Sign-up"/>
-      </form>)
+      </form> 
+    </div>)
+      
   }
 
 }

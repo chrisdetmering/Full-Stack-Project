@@ -346,10 +346,10 @@ __webpack_require__.r(__webpack_exports__);
 
 var App = function App(props) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Route"], {
-    path: "/users/new",
+    path: "/signup",
     component: _session_signup__WEBPACK_IMPORTED_MODULE_3__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Route"], {
-    path: "/session/new",
+    path: "/login",
     component: _session_login_container__WEBPACK_IMPORTED_MODULE_2__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Route"], {
     path: "/todos",
@@ -382,10 +382,7 @@ var Root = function Root(_ref) {
   var store = _ref.store;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_redux__WEBPACK_IMPORTED_MODULE_1__["Provider"], {
     store: store
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["HashRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
-    path: "/",
-    component: _app__WEBPACK_IMPORTED_MODULE_2__["App"]
-  })));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["HashRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_app__WEBPACK_IMPORTED_MODULE_2__["App"], null)));
 };
 
 /***/ }),
@@ -454,7 +451,6 @@ var Login = /*#__PURE__*/function (_React$Component) {
     value: function handleSubmit(e) {
       e.preventDefault();
       var user = this.state;
-      console.log(user);
       this.props.loginUser(user).then(function (user) {
         console.log(user);
       });
@@ -466,7 +462,7 @@ var Login = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Login"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
@@ -564,7 +560,7 @@ var SignUp = /*#__PURE__*/function (_React$Component) {
   _createClass(SignUp, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Signup"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         htmlFor: "username"
       }, "Username", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
@@ -577,7 +573,7 @@ var SignUp = /*#__PURE__*/function (_React$Component) {
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "submit",
         value: "Sign-up"
-      }));
+      })));
     }
   }]);
 
@@ -1529,6 +1525,29 @@ var thunk = function thunk(_ref) {
 
 /***/ }),
 
+/***/ "./frontend/reducers/entities_reducer.js":
+/*!***********************************************!*\
+  !*** ./frontend/reducers/entities_reducer.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var _step_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./step_reducer */ "./frontend/reducers/step_reducer.js");
+/* harmony import */ var _todo_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./todo_reducer */ "./frontend/reducers/todo_reducer.js");
+
+
+
+var entitiesReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
+  steps: _step_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
+  todos: _todo_reducer__WEBPACK_IMPORTED_MODULE_2__["default"]
+});
+/* harmony default export */ __webpack_exports__["default"] = (entitiesReducer);
+
+/***/ }),
+
 /***/ "./frontend/reducers/error_reducer.js":
 /*!********************************************!*\
   !*** ./frontend/reducers/error_reducer.js ***!
@@ -1573,20 +1592,17 @@ var errorReducer = function errorReducer() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
-/* harmony import */ var _todo_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./todo_reducer */ "./frontend/reducers/todo_reducer.js");
-/* harmony import */ var _step_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./step_reducer */ "./frontend/reducers/step_reducer.js");
-/* harmony import */ var _error_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./error_reducer */ "./frontend/reducers/error_reducer.js");
-/* harmony import */ var _session_reducer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./session_reducer */ "./frontend/reducers/session_reducer.js");
-
+/* harmony import */ var _entities_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./entities_reducer */ "./frontend/reducers/entities_reducer.js");
+/* harmony import */ var _error_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./error_reducer */ "./frontend/reducers/error_reducer.js");
+/* harmony import */ var _session_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./session_reducer */ "./frontend/reducers/session_reducer.js");
 
 
 
 
 var rootReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
-  todos: _todo_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
-  steps: _step_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
-  errors: _error_reducer__WEBPACK_IMPORTED_MODULE_3__["default"],
-  session: _session_reducer__WEBPACK_IMPORTED_MODULE_4__["default"]
+  entities: _entities_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
+  errors: _error_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
+  session: _session_reducer__WEBPACK_IMPORTED_MODULE_3__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (rootReducer);
 

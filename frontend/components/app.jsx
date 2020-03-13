@@ -11,9 +11,9 @@ import {
 export const App = (props) => (
     
     <Switch>
-      <Route path='/users/new' component= { SignUp } />
-      <Route path='/session/new' component= { LoginContainer } />
-      <Route path='/todos' component={TodoListContainer} />
+      <Route path='/signup' component= { SignUp } />
+      <Route path='/login' component= { LoginContainer } />
+      <Route path='/todos' component={ TodoListContainer } />
     </Switch>
 
 );

@@ -21,7 +21,6 @@ class Login extends React.Component {
   handleSubmit(e) { 
     e.preventDefault();
     var user = this.state
-      console.log(user)
     this.props.loginUser(user).then(
       user => { console.log(user) }
     ); 
@@ -31,6 +30,7 @@ class Login extends React.Component {
 
   render() { 
     return (<div>
+      <h1>Login</h1>
       <form onSubmit={this.handleSubmit}>
         <input type="text" name="username" onChange={this.updateProps} value={this.state.username}/>
         <input type="password" name="password" onChange={this.updateProps} value={this.state.password}/>
