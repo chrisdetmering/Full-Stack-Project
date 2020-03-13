@@ -1,8 +1,8 @@
 import React from 'react'
 import TodoListContainer from './todos/todo_list_container';
-import LoginContainer from './login_logout/login_contrainer';
+import LoginContainer from './session/login_container';
+import SignUp from './session/signup'
 import {
-  BrowserRouter as Router,
   Switch,
   Route
 } from "react-router-dom";
@@ -10,16 +10,11 @@ import {
 
 export const App = (props) => (
     
- 
-  
-  
-  <Router> 
     <Switch>
-      <Route path='/' component= { LoginContainer } />
-
-     
+      <Route path='/users/new' component= { SignUp } />
+      <Route path='/session/new' component= { LoginContainer } />
     </Switch>
-  </Router>
+
 );
 
 
