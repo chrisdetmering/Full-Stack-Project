@@ -1,11 +1,12 @@
 import { combineReducers } from 'redux';
-import  step_reducer  from'./step_reducer'; 
-import  todo_reducer  from './todo_reducer';
-
+import  stepReducer  from'./step_reducer'; 
+import  todoReducer  from './todo_reducer';
+import userReducer from './user_reducer';
 
 const entitiesReducer = combineReducers({ 
-  steps: step_reducer, 
-  todos: todo_reducer
+  steps: stepReducer, 
+  todos: todoReducer, 
+  users: userReducer
 })
 
 export default entitiesReducer;
