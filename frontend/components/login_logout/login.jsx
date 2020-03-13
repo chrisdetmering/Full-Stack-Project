@@ -1,6 +1,5 @@
 import React from 'react'
 
-
 class Login extends React.Component { 
   constructor(props) { 
     super(props) 
@@ -19,7 +18,6 @@ class Login extends React.Component {
    
   }
 
-
   handleSubmit(e) { 
     e.preventDefault();
     var user = this.state
@@ -29,7 +27,6 @@ class Login extends React.Component {
 
     this.setState({ username: "", password: "" })
   }
-
 
   render() { 
     return (<div>
@@ -43,6 +40,5 @@ class Login extends React.Component {
     )
   }
 }
-
 
 export default Login; 
