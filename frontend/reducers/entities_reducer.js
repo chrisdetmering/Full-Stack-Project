@@ -6,7 +6,7 @@ import userReducer from './user_reducer';
 const entitiesReducer = combineReducers({ 
   steps: stepReducer, 
   todos: todoReducer, 
-  users: userReducer
+  user: userReducer
 })
 
 export default entitiesReducer;
