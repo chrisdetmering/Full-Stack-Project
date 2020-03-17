@@ -29,12 +29,14 @@ class Greeting extends React.Component {
 
     return (
       <div>
-        {greeting}
-        <Switch>
+        <SignUp />
+
+
+        {/* <Switch>
           <Route path={"/login"} component={LoginContainer}/>
           <Route path={"/signup"} component={SignUp}/>
           <Route path={"/user"} component={User} />
-        </Switch>
+        </Switch> */}
       </div>
     )
   }

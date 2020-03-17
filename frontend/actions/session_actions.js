@@ -23,8 +23,9 @@ export const loginUser = user => dispatch => (
   )
 )
 export const createUser = user => dispatch => ( 
-  SessionAPIUtil.postSession(user).then( 
-    user => dispatch(receiveCurrentUser(user))
+  SessionAPIUtil.postUser(user).then( 
+    user => dispatch(receiveCurrentUser(user)),
+    errors => console.log(errors.responseText)
   )
 )
 
@@ -35,3 +36,5 @@ export const logout = () => dispatch => (
 )
 
 window.loginUser = loginUser;
+
+window.createUser = createUser;
