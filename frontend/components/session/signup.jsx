@@ -21,12 +21,10 @@ class SignUp extends React.Component {
   handleSubmit(e) { 
     e.preventDefault();
     var user = this.state; 
-    console.log(user)
     this.props.createUser(user).then(
       user => console.log(user), 
       error => console.log(error)
-     ) 
-    ; 
+     ); 
     
     this.setState({ username: "", email: "", password: "" });
   }
@@ -43,7 +41,7 @@ class SignUp extends React.Component {
         <label htmlFor="password">
           Email:
           <input onChange={this.updateProps}
-            type="text" name="password" />
+            type="text" name="email" />
         </label>
         <br />
         <label htmlFor="password">
