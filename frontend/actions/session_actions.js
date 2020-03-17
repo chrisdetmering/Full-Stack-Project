@@ -33,3 +33,5 @@ export const logout = () => dispatch => (
     () => dispatch(logoutCurrentUser()) 
   )
 )
+
+window.loginUser = loginUser;
