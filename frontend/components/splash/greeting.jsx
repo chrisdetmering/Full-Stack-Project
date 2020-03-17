@@ -1,4 +1,6 @@
 import React from 'react';
+import LoginContainer from '../session/login_container';
+import SignUp from '../session/signup';
 import {
   Switch,
   Route,
@@ -12,16 +14,22 @@ class Greeting extends React.Component {
   }
 
   render() { 
-    var splash; 
     const loggedIn = this.props.currentUser
-    
-    splash = !loggedIn ? 'not logged in' : "loggedin"
-    
+    const user = <div></div>
+    const noUser = <div>
+      <Link to='/login'>Login</Link>
+      <br/>
+      <Link to='/signup'>Signup</Link>
+    </div>
+
     return (
-
-      
-
-      <div>{splash}</div>
+      <div>
+        {noUser}
+        <Switch>
+          <Route path={"/login"} component={LoginContainer}/>
+          <Route path={"/signup"} component={SignUp}/>
+        </Switch>
+      </div>
     )
   }
 
