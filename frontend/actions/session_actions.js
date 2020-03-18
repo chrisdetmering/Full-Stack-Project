@@ -25,7 +25,7 @@ export const loginUser = user => dispatch => (
 export const createUser = user => dispatch => ( 
   SessionAPIUtil.postUser(user).then( 
     user => dispatch(receiveCurrentUser(user)),
-    errors => console.log(errors.responseText)
+    errors => dispatch()
   )
 )
 

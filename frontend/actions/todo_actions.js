@@ -1,5 +1,5 @@
 import * as APIUtil from '../util/todo_api_util';
-import { receiveErrors } from './error_actions';
+import { receiveSessionErrors } from './error_session_actions';
 export const RECEIVE_TODOS = "RECEIVE_TODOS";
 export const RECEIVE_TODO = "RECEIVE_TODO";
 export const REMOVE_TODO = "REMOVE_TODO";
@@ -20,14 +20,14 @@ export const createTodo = (todo) => (dispatch) => (
 export const updateTodo = (todo) => (dispatch) => ( 
   APIUtil.updateTodo(todo).then(
     todo => dispatch(receiveTodo(todo)),
-    err => dispatch(receiveErrors(err.responseJSON))
+    err => dispatch(receiveSessionErrors(err.responseJSON))
   )
 )
 
 export const deleteTodo = (todo) => (dispatch) => ( 
   APIUtil.deleteTodo(todo).then( 
     (todo) => dispatch(removeTodo(todo)),
-    (err) => dispatch(receiveErrors(err.responseJSON))
+    (err) => dispatch(receiveSessionErrors(err.responseJSON))
   )
 )
 

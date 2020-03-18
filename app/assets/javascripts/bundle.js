@@ -86,22 +86,22 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./frontend/actions/error_actions.js":
-/*!*******************************************!*\
-  !*** ./frontend/actions/error_actions.js ***!
-  \*******************************************/
-/*! exports provided: RECEIVE_ERRORS, CLEAR_ERRORS, receiveErrors, clearErrors */
+/***/ "./frontend/actions/error_session_actions.js":
+/*!***************************************************!*\
+  !*** ./frontend/actions/error_session_actions.js ***!
+  \***************************************************/
+/*! exports provided: RECEIVE_ERRORS, CLEAR_ERRORS, receiveSessionErrors, clearErrors */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ERRORS", function() { return RECEIVE_ERRORS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLEAR_ERRORS", function() { return CLEAR_ERRORS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveErrors", function() { return receiveErrors; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveSessionErrors", function() { return receiveSessionErrors; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearErrors", function() { return clearErrors; });
 var RECEIVE_ERRORS = "RECEIVE_ERRORS";
 var CLEAR_ERRORS = "CLEAR_ERRORS";
-var receiveErrors = function receiveErrors(errors) {
+var receiveSessionErrors = function receiveSessionErrors(errors) {
   return {
     type: RECEIVE_ERRORS,
     errors: errors
@@ -167,7 +167,7 @@ var createUser = function createUser(user) {
     return _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__["postUser"](user).then(function (user) {
       return dispatch(receiveCurrentUser(user));
     }, function (errors) {
-      return console.log(errors.responseText);
+      return dispatch();
     });
   };
 };
@@ -272,7 +272,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveTodo", function() { return receiveTodo; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeTodo", function() { return removeTodo; });
 /* harmony import */ var _util_todo_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/todo_api_util */ "./frontend/util/todo_api_util.js");
-/* harmony import */ var _error_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./error_actions */ "./frontend/actions/error_actions.js");
+/* harmony import */ var _error_session_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./error_session_actions */ "./frontend/actions/error_session_actions.js");
 
 
 var RECEIVE_TODOS = "RECEIVE_TODOS";
@@ -290,7 +290,7 @@ var createTodo = function createTodo(todo) {
     return _util_todo_api_util__WEBPACK_IMPORTED_MODULE_0__["createTodo"](todo).then(function (todo) {
       return dispatch(receiveTodo(todo));
     }, function (err) {
-      return dispatch(Object(_error_actions__WEBPACK_IMPORTED_MODULE_1__["receiveErrors"])(err.responseJSON));
+      return dispatch(receiveErrors(err.responseJSON));
     });
   };
 };
@@ -299,7 +299,7 @@ var updateTodo = function updateTodo(todo) {
     return _util_todo_api_util__WEBPACK_IMPORTED_MODULE_0__["updateTodo"](todo).then(function (todo) {
       return dispatch(receiveTodo(todo));
     }, function (err) {
-      return dispatch(Object(_error_actions__WEBPACK_IMPORTED_MODULE_1__["receiveErrors"])(err.responseJSON));
+      return dispatch(Object(_error_session_actions__WEBPACK_IMPORTED_MODULE_1__["receiveSessionErrors"])(err.responseJSON));
     });
   };
 };
@@ -308,7 +308,7 @@ var deleteTodo = function deleteTodo(todo) {
     return _util_todo_api_util__WEBPACK_IMPORTED_MODULE_0__["deleteTodo"](todo).then(function (todo) {
       return dispatch(removeTodo(todo));
     }, function (err) {
-      return dispatch(Object(_error_actions__WEBPACK_IMPORTED_MODULE_1__["receiveErrors"])(err.responseJSON));
+      return dispatch(Object(_error_session_actions__WEBPACK_IMPORTED_MODULE_1__["receiveSessionErrors"])(err.responseJSON));
     });
   };
 };
