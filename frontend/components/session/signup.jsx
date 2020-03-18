@@ -1,4 +1,6 @@
 import React from 'react'; 
+import Errors from '../errors/errors';
+import ErrorsContainer from '../errors/errors_container';
 
 class SignUp extends React.Component { 
   constructor(props) { 
@@ -22,36 +24,39 @@ class SignUp extends React.Component {
     e.preventDefault();
     var user = this.state; 
     this.props.createUser(user).then(
-      user => console.log(user), 
-      error => console.log(error)
+      () => this.props.history.push('/todos')
      ); 
     
     this.setState({ username: "", email: "", password: "" });
   }
 
   render() { 
+    
     return( 
-      <form onSubmit={this.handleSubmit}>
-        <label htmlFor="username">
-          Username:
-          <input  onChange={this.updateProps}  
-          type="text" name="username"/>
-        </label>
-        <br/>
-        <label htmlFor="password">
-          Email:
-          <input onChange={this.updateProps}
-            type="text" name="email" />
-        </label>
-        <br />
-        <label htmlFor="password">
-          Password: 
-          <input onChange={this.updateProps}
-          type="password" name="password"/>
-        </label>
-        <br/>
-        <input type="submit" value="Sign Up!"/>
-      </form>
+      <div>
+          <ErrorsContainer />
+        <form>
+          <label htmlFor="username">
+            Username:
+            <input  onChange={this.updateProps}  
+            type="text" name="username"/>
+          </label>
+          <br/>
+          <label htmlFor="password">
+            Email:
+            <input onChange={this.updateProps}
+              type="text" name="email" />
+          </label>
+          <br />
+          <label htmlFor="password">
+            Password: 
+            <input onChange={this.updateProps}
+            type="password" name="password"/>
+          </label>
+          <br/>
+          <button onClick={this.handleSubmit}>Sign-up!</button>
+        </form>
+      </div>
     ) 
   }
 

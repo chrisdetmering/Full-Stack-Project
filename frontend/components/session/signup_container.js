@@ -6,6 +6,11 @@ const mapDispatchToProps = dispatch => ({
   createUser: (user) => dispatch(createUser(user))
 })
 
-const SignUpContainer = connect(null, mapDispatchToProps)(SignUp)
+const mapStateToProps = state => ({ 
+  state
+})
+
+
+const SignUpContainer = connect(mapStateToProps, mapDispatchToProps)(SignUp)
 
 export default SignUpContainer; 
