@@ -1,14 +1,11 @@
 import React from 'react'
 import GreetingContainer from './splash/greeting_container';
-import LoginContainer from './session/login_container';
-import {
-    Route, 
-    Switch
-} from "react-router-dom";
-
+import SignUpContainer from './session/signup_container'
+import {  Route } from 'react-router-dom'
 export const App = (props) => (
     <div>
-        <GreetingContainer />
+        <Route exact path={'/'} component={GreetingContainer} />
+        <Route path={'/signup'} component={SignUpContainer} />
     </div>
 );
 
