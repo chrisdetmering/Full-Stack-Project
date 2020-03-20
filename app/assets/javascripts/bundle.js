@@ -345,20 +345,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _splash_greeting_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./splash/greeting_container */ "./frontend/components/splash/greeting_container.js");
 /* harmony import */ var _session_signup_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./session/signup_container */ "./frontend/components/session/signup_container.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _session_login_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./session/login_container */ "./frontend/components/session/login_container.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
 
 
 
 
 var App = function App(props) {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Route"], {
     exact: true,
     path: '/',
     component: _splash_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Route"], {
+    exact: true,
     path: '/signup',
     component: _session_signup_container__WEBPACK_IMPORTED_MODULE_2__["default"]
-  }));
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Route"], {
+    path: '/login',
+    component: _session_login_container__WEBPACK_IMPORTED_MODULE_3__["default"]
+  })));
 };
 
 /***/ }),
@@ -774,9 +780,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _session_login_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../session/login_container */ "./frontend/components/session/login_container.js");
-/* harmony import */ var _session_signup_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../session/signup_container */ "./frontend/components/session/signup_container.js");
-/* harmony import */ var _user_user__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../user/user */ "./frontend/components/user/user.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -798,9 +801,6 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-
-
-
 var Greeting = /*#__PURE__*/function (_React$Component) {
   _inherits(Greeting, _React$Component);
 
@@ -811,6 +811,7 @@ var Greeting = /*#__PURE__*/function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Greeting).call(this, props));
     _this.goToSignUp = _this.goToSignUp.bind(_assertThisInitialized(_this));
+    _this.goToLogin = _this.goToLogin.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -821,11 +822,19 @@ var Greeting = /*#__PURE__*/function (_React$Component) {
       this.props.history.push('/signup');
     }
   }, {
+    key: "goToLogin",
+    value: function goToLogin(e) {
+      e.preventDefault();
+      this.props.history.push('/login');
+    }
+  }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.goToSignUp
-      }, "SignUp"));
+      }, "SignUp"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.goToLogin
+      }, "Login")));
     }
   }]);
 
@@ -868,64 +877,6 @@ var mapStateToProps = function mapStateToProps(state) {
 
 var GreetingContainer = Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToprops)(_greeting__WEBPACK_IMPORTED_MODULE_1__["default"]);
 /* harmony default export */ __webpack_exports__["default"] = (GreetingContainer);
-
-/***/ }),
-
-/***/ "./frontend/components/user/user.jsx":
-/*!*******************************************!*\
-  !*** ./frontend/components/user/user.jsx ***!
-  \*******************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
-
-var User = /*#__PURE__*/function (_React$Component) {
-  _inherits(User, _React$Component);
-
-  function User(props) {
-    _classCallCheck(this, User);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(User).call(this, props));
-  }
-
-  _createClass(User, [{
-    key: "render",
-    value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        htmlFor: ""
-      }, "Username Goes Here"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        value: ""
-      }, "Logout"));
-    }
-  }]);
-
-  return User;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
-
-/* harmony default export */ __webpack_exports__["default"] = (User);
 
 /***/ }),
 

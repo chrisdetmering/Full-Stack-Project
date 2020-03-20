@@ -1,14 +1,12 @@
 import React from 'react';
-import { Switch, Route, withRouter } from "react-router-dom";
-import LoginContainer from '../session/login_container';
-import SignUpContainer from '../session/signup_container';
-import User from '../user/user';
+import { withRouter } from "react-router-dom";
 
 class Greeting extends React.Component { 
   constructor(props) { 
     super(props)
 
     this.goToSignUp = this.goToSignUp.bind(this);
+    this.goToLogin = this.goToLogin.bind(this);
   }
 
   goToSignUp(e) { 
@@ -17,12 +15,20 @@ class Greeting extends React.Component {
 
   }
 
+  goToLogin(e) {
+    e.preventDefault()
+    this.props.history.push('/login')
+
+  }
+
   render() { 
     return (
       <div>
-        <button onClick={this.goToSignUp}>SignUp</button>
-  
-      
+        <nav>
+          <button onClick={this.goToSignUp}>SignUp</button>
+          <button onClick={this.goToLogin}>Login</button>
+        </nav>
+
       </div>
     )
   }
