@@ -7,12 +7,12 @@ class TodoListItem extends React.Component {
     this.state = { detail: false }
   }
 
-  render() {   
-
-    return (<div>
-      Todo
-    </div>
-    )
+  render() {  
+    var todo = this.props.todo 
+    return (
+    <li key={todo.id}>
+      {todo.title}
+    </li>)
   } 
 }
 

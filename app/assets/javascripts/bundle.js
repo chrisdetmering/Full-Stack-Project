@@ -1021,7 +1021,11 @@ var ToDoList = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Todos", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_todo_list_item__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_todo_form__WEBPACK_IMPORTED_MODULE_2__["default"], null));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", null, this.props.todos.map(function (todo) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_todo_list_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          todo: todo
+        });
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_todo_form__WEBPACK_IMPORTED_MODULE_2__["default"], null));
     }
   }]);
 
@@ -1139,7 +1143,10 @@ var TodoListItem = /*#__PURE__*/function (_React$Component) {
   _createClass(TodoListItem, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Todo");
+      var todo = this.props.todo;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        key: todo.id
+      }, todo.title);
     }
   }]);
 
@@ -1256,7 +1263,7 @@ var rootReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])(
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "allTodos", function() { return allTodos; });
 var allTodos = function allTodos(_ref) {
-  var todos = _ref.entities;
+  var todos = _ref.entities.todos;
   return Object.keys(todos).map(function (id) {
     return todos[id];
   });
