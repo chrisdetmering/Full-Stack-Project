@@ -939,9 +939,11 @@ var ToDoList = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", null, this.props.todos.map(function (todo) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_todo_list_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          key: todo.id
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_todo_list_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           todo: todo
-        });
+        }));
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_todo_form__WEBPACK_IMPORTED_MODULE_2__["default"], null));
     }
   }]);
@@ -1059,9 +1061,13 @@ var TodoListItem = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       var todo = this.props.todo;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        key: todo.id
-      });
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: ""
+      }, todo.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: ""
+      }, "due date"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "checkbox"
+      }));
     }
   }]);
 

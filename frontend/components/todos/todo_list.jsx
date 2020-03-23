@@ -13,18 +13,15 @@ class ToDoList extends React.Component {
   }
 
   render() { 
-    
-    return (
-      <div>
-         <ol>
-           {this.props.todos.map(todo =>( 
-             <TodoListItem todo={todo} /> 
-           ))}
-         </ol>
-          
-          <TodoForm />
-      </div>
-    )
+    return (<div>
+        <ol>
+          {this.props.todos.map(todo =>( 
+            <li key={todo.id}>
+              <TodoListItem todo={todo} /> 
+            </li>))}
+        </ol>
+        <TodoForm />
+      </div>)
   }
 }
 

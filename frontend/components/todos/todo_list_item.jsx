@@ -9,9 +9,11 @@ class TodoListItem extends React.Component {
   render() {  
     var todo = this.props.todo 
     return (
-    <li key={todo.id}>
-      
-    </li>)
+      <form>
+        <label className="">{todo.title}</label> 
+        <label className="">due date</label>
+        <input type="checkbox"/>
+      </form>)
   } 
 }
 
