@@ -178,75 +178,6 @@ window.createUser = createUser;
 
 /***/ }),
 
-/***/ "./frontend/actions/step_actions.js":
-/*!******************************************!*\
-  !*** ./frontend/actions/step_actions.js ***!
-  \******************************************/
-/*! exports provided: RECEIVE_STEPS, RECEIVE_STEP, REMOVE_STEP, fetchSteps, createStep, deleteStep, receiveSteps, receiveStep, removeStep */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_STEPS", function() { return RECEIVE_STEPS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_STEP", function() { return RECEIVE_STEP; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_STEP", function() { return REMOVE_STEP; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchSteps", function() { return fetchSteps; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createStep", function() { return createStep; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteStep", function() { return deleteStep; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveSteps", function() { return receiveSteps; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveStep", function() { return receiveStep; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeStep", function() { return removeStep; });
-/* harmony import */ var _util_step_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/step_api_util */ "./frontend/util/step_api_util.js");
-
-var RECEIVE_STEPS = "RECEIVE_STEPS";
-var RECEIVE_STEP = "RECEIVE_STEP";
-var REMOVE_STEP = "REMOVE_STEP";
-var fetchSteps = function fetchSteps() {
-  return function (dispatch) {
-    return _util_step_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchSteps"]().then(function (steps) {
-      return dispatch(receiveSteps(steps));
-    });
-  };
-};
-var createStep = function createStep(step) {
-  return function (dispatch) {
-    return _util_step_api_util__WEBPACK_IMPORTED_MODULE_0__["createStep"](step).then(function (step) {
-      return dispatch(receiveStep(step));
-    });
-  };
-};
-var deleteStep = function deleteStep(step) {
-  return function (dispatch) {
-    return _util_step_api_util__WEBPACK_IMPORTED_MODULE_0__["deleteStep"](step).then(function (step) {
-      return dispatch(removeStep(step));
-    });
-  };
-};
-var receiveSteps = function receiveSteps(steps) {
-  return {
-    type: RECEIVE_STEPS,
-    steps: steps
-  };
-};
-var receiveStep = function receiveStep(step) {
-  return {
-    type: RECEIVE_STEP,
-    step: step
-  };
-};
-var removeStep = function removeStep(step) {
-  return {
-    type: REMOVE_STEP,
-    step: step
-  };
-};
-window.receiveStep = receiveStep;
-window.removeStep = removeStep;
-window.createStep = createStep;
-window.deleteStep = deleteStep;
-
-/***/ }),
-
 /***/ "./frontend/actions/todo_actions.js":
 /*!******************************************!*\
   !*** ./frontend/actions/todo_actions.js ***!
@@ -898,9 +829,7 @@ var GreetingContainer = Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_todo_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/todo_actions */ "./frontend/actions/todo_actions.js");
-/* harmony import */ var _actions_step_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/step_actions */ "./frontend/actions/step_actions.js");
-/* harmony import */ var _todo_detail_view__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./todo_detail_view */ "./frontend/components/todos/todo_detail_view.jsx");
-
+/* harmony import */ var _todo_detail_view__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./todo_detail_view */ "./frontend/components/todos/todo_detail_view.jsx");
 
 
 
@@ -909,14 +838,11 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     removeTodo: function removeTodo(todo) {
       return dispatch(Object(_actions_todo_actions__WEBPACK_IMPORTED_MODULE_1__["removeTodo"])(todo));
-    },
-    receiveSteps: function receiveSteps(step) {
-      return dispatch(Object(_actions_step_actions__WEBPACK_IMPORTED_MODULE_2__["receiveSteps"])(step));
     }
   };
 };
 
-var detailViewContainer = Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(null, mapDispatchToProps)(_todo_detail_view__WEBPACK_IMPORTED_MODULE_3__["default"]);
+var detailViewContainer = Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(null, mapDispatchToProps)(_todo_detail_view__WEBPACK_IMPORTED_MODULE_2__["default"]);
 /* harmony default export */ __webpack_exports__["default"] = (detailViewContainer);
 
 /***/ }),
@@ -1378,17 +1304,14 @@ var thunk = function thunk(_ref) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
-/* harmony import */ var _step_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./step_reducer */ "./frontend/reducers/step_reducer.js");
-/* harmony import */ var _todo_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./todo_reducer */ "./frontend/reducers/todo_reducer.js");
-/* harmony import */ var _user_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./user_reducer */ "./frontend/reducers/user_reducer.js");
-
+/* harmony import */ var _todo_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./todo_reducer */ "./frontend/reducers/todo_reducer.js");
+/* harmony import */ var _user_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./user_reducer */ "./frontend/reducers/user_reducer.js");
 
 
 
 var entitiesReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
-  steps: _step_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
-  todos: _todo_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
-  user: _user_reducer__WEBPACK_IMPORTED_MODULE_3__["default"]
+  todos: _todo_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
+  user: _user_reducer__WEBPACK_IMPORTED_MODULE_2__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (entitiesReducer);
 
@@ -1534,17 +1457,6 @@ function sessionReducer() {
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (sessionReducer);
-
-/***/ }),
-
-/***/ "./frontend/reducers/step_reducer.js":
-/*!*******************************************!*\
-  !*** ./frontend/reducers/step_reducer.js ***!
-  \*******************************************/
-/*! exports provided: default */
-/***/ (function(module, exports) {
-
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nError: ENOENT: no such file or directory, open '/Users/chris/done_app/frontend/reducers/step_reducer.js'");
 
 /***/ }),
 
@@ -1718,44 +1630,6 @@ var deleteSession = function deleteSession() {
   return $.ajax({
     url: 'api/session',
     method: 'delete'
-  });
-};
-
-/***/ }),
-
-/***/ "./frontend/util/step_api_util.js":
-/*!****************************************!*\
-  !*** ./frontend/util/step_api_util.js ***!
-  \****************************************/
-/*! exports provided: fetchSteps, createStep, deleteStep */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchSteps", function() { return fetchSteps; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createStep", function() { return createStep; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteStep", function() { return deleteStep; });
-var fetchSteps = function fetchSteps() {
-  return $.ajax({
-    method: "GET",
-    url: '/api/steps',
-    dataType: "json"
-  });
-};
-var createStep = function createStep(step) {
-  return $.ajax({
-    method: "POST",
-    url: '/api/steps',
-    data: {
-      step: step
-    },
-    dataType: 'json'
-  });
-};
-var deleteStep = function deleteStep(step) {
-  return $.ajax({
-    method: "DELETE",
-    url: "/api/steps/".concat(step.id)
   });
 };
 
