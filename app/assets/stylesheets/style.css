@@ -12,3 +12,7 @@ nav {
   display: flex; 
   justify-content: flex-end;
 }
+
+embed { 
+  width:600px; height: 600px;
+}
