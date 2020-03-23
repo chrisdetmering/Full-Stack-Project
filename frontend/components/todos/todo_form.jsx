@@ -34,13 +34,10 @@ class TodoForm extends React.Component {
   }
 
   render() { 
-    const errors = this.props.errors
+    const errors = this.props.errors.sessions
     const errorsList = errors.map((error, idx) =>  
         <li key={idx}>{error}</li>
       )
-    const tags = this.state.tag_names.map( (tag, i) => (
-      <li key={i}>{tag}</li>
-    ))
 
     return(<div>
       <h1>Add ToDo:</h1>

@@ -366,6 +366,9 @@ var App = function App(props) {
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["Route"], {
     path: '/login',
     component: _session_login_container__WEBPACK_IMPORTED_MODULE_3__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["Route"], {
+    path: '/todos',
+    component: _todos_todo_list_container__WEBPACK_IMPORTED_MODULE_4__["default"]
   })));
 };
 
@@ -1404,16 +1407,11 @@ var TodoForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var errors = this.props.errors;
+      var errors = this.props.errors.sessions;
       var errorsList = errors.map(function (error, idx) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: idx
         }, error);
-      });
-      var tags = this.state.tag_names.map(function (tag, i) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-          key: i
-        }, tag);
       });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Add ToDo:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit
@@ -1801,7 +1799,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "allTodos", function() { return allTodos; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "stepsByTodoId", function() { return stepsByTodoId; });
 var allTodos = function allTodos(_ref) {
-  var todos = _ref.todos;
+  var todos = _ref.entities;
   return Object.keys(todos).map(function (id) {
     return todos[id];
   });

@@ -11,7 +11,7 @@ export const App = (props) => (
 			<Route exact path={'/'} component={GreetingContainer} />
 			<Route exact path={'/signup'} component={SignUpContainer} />
 			<Route path={'/login'} component={LoginContainer} />
-			{/* <Route path={'/todos'} component={TodoListContainer} /> */}
+			<Route path={'/todos'} component={TodoListContainer} />
 			
 		</Switch>
 	</div>

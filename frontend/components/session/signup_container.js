@@ -7,7 +7,7 @@ const mapDispatchToProps = dispatch => ({
 })
 
 const mapStateToProps = state => ({ 
-  state
+  state 
 })
 
 
