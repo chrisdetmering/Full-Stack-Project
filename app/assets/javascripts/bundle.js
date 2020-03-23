@@ -915,8 +915,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _util_util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../util/util */ "./frontend/util/util.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -925,9 +923,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -950,69 +948,13 @@ var TodoForm = /*#__PURE__*/function (_React$Component) {
       body: "",
       done: false
     };
-    _this.props = props;
-    _this.updateProperty = _this.updateProperty.bind(_assertThisInitialized(_this));
-    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
-    _this.succuess = _this.success.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(TodoForm, [{
-    key: "updateProperty",
-    value: function updateProperty(event) {
-      event.preventDefault();
-      var name = event.target.name;
-      var value = event.target.value;
-      this.setState(_defineProperty({}, name, value));
-    }
-  }, {
-    key: "success",
-    value: function success() {
-      this.setState({
-        title: "",
-        body: ""
-      });
-      this.props.clearErrors();
-    }
-  }, {
-    key: "handleSubmit",
-    value: function handleSubmit(event) {
-      event.preventDefault();
-      var todo = Object.assign({}, {
-        id: Object(_util_util__WEBPACK_IMPORTED_MODULE_1__["uniqueId"])()
-      }, this.state);
-      this.props.createTodo(todo).then(this.success());
-    }
-  }, {
     key: "render",
     value: function render() {
-      var errors = this.props.errors.session;
-      var errorsList = errors.map(function (error, idx) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-          key: idx
-        }, error);
-      });
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Add ToDo:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        onSubmit: this.handleSubmit
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, errorsList), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        htmlFor: "title"
-      }, "Title"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        onChange: this.updateProperty,
-        name: "title",
-        value: this.state.title
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        htmlFor: "body"
-      }, "Body"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
-        name: "body",
-        id: "",
-        cols: "30",
-        rows: "10",
-        onChange: this.updateProperty,
-        value: this.state.body
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "submit",
-        value: "Submit"
-      })));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "TodoForm"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null));
     }
   }]);
 
@@ -1079,29 +1021,7 @@ var ToDoList = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var receiveTodo = this.props.receiveTodo;
-      var removeTodo = this.props.removeTodo;
-      var todos = this.props.todos;
-      var createTodo = this.props.createTodo;
-      var clearErrors = this.props.clearErrors;
-      var errors = this.props.errors;
-      var updateTodo = this.props.updateTodo;
-      var deleteTodo = this.props.deleteTodo;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", null, todos.map(function (todo, idx) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_todo_list_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
-          todo: todo,
-          key: idx,
-          removeTodo: removeTodo,
-          receiveTodo: receiveTodo,
-          updateTodo: updateTodo,
-          deleteTodo: deleteTodo
-        });
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_todo_form__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        receiveTodo: receiveTodo,
-        createTodo: createTodo,
-        clearErrors: clearErrors,
-        errors: errors
-      }));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Todos", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_todo_list_item__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_todo_form__WEBPACK_IMPORTED_MODULE_2__["default"], null));
     }
   }]);
 
@@ -1190,9 +1110,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -1213,51 +1133,13 @@ var TodoListItem = /*#__PURE__*/function (_React$Component) {
     _this.state = {
       detail: false
     };
-    _this.showDetail = _this.showDetail.bind(_assertThisInitialized(_this));
-    _this.toggleTodo = _this.toggleTodo.bind(_assertThisInitialized(_this));
-    _this.deleteTodo = _this.deleteTodo.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(TodoListItem, [{
-    key: "deleteTodo",
-    value: function deleteTodo(e) {
-      e.preventDefault();
-      this.props.deleteTodo(this.props.todo);
-    }
-  }, {
-    key: "showDetail",
-    value: function showDetail(e) {
-      e.preventDefault();
-      this.setState({
-        detail: !this.state.detail
-      });
-    }
-  }, {
-    key: "toggleTodo",
-    value: function toggleTodo(event) {
-      event.preventDefault();
-      var todo = Object.assign({}, this.props.todo, {
-        done: !this.props.todo.done
-      });
-      this.props.updateTodo(todo);
-    }
-  }, {
     key: "render",
     value: function render() {
-      var todo = this.props.todo;
-      var title = todo.title,
-          done = todo.done;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        key: this.props.idx,
-        onClick: this.showDetail
-      }, title), this.state.detail && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_todo_detail_container__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        todo: todo
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: this.toggleTodo
-      }, done ? "Undo" : "Done"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: this.deleteTodo
-      }, "Delete"));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Todo");
     }
   }]);
 
@@ -1408,6 +1290,7 @@ var sessionErrorsReducer = function sessionErrorsReducer() {
 
   switch (action.type) {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_SESSION_ERRORS"]:
+      console.log(action.errors);
       return [].concat(_toConsumableArray(state), _toConsumableArray(action.errors));
 
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:

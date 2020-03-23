@@ -4,6 +4,7 @@ import { RECEIVE_SESSION_ERRORS, RECEIVE_CURRENT_USER } from '../actions/session
 const sessionErrorsReducer = ( state = [], action) => { 
   switch(action.type) { 
     case RECEIVE_SESSION_ERRORS: 
+    console.log(action.errors)
       return [...state, ...action.errors]
     case RECEIVE_CURRENT_USER: 
       return []; 
