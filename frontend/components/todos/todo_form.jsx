@@ -1,6 +1,5 @@
 import React from 'react'
 import { uniqueId } from '../../util/util'
-import TagItem from '../tags/tag_item';
 
 class TodoForm extends React.Component { 
   constructor(props) { 
@@ -10,7 +9,6 @@ class TodoForm extends React.Component {
     this.updateProperty = this.updateProperty.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.succuess = this.success.bind(this);
-    this.addTag = this.addTag.bind(this);
   }
 
   updateProperty(event) { 
@@ -20,10 +18,6 @@ class TodoForm extends React.Component {
     
 
     this.setState({ [name]: value })
-  }
-
-  addTag(tag) { 
-    this.setState({ tag_names: [...this.state.tag_names, tag] })
   }
 
  
@@ -69,8 +63,6 @@ class TodoForm extends React.Component {
             onChange={this.updateProperty}
             value={this.state.body}></textarea>
           <br/>
-
-          <TagItem tags={tags} addTag={this.addTag}/>
 
           <input type="submit" value="Submit"/>
         </form>

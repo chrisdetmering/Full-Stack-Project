@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { allTodos } from '../../reducers/selectors';
 import { removeTodo } from '../../actions/todo_actions';
 import { fetchTodos, createTodo, updateTodo, deleteTodo } from '../../actions/todo_actions';
-import { clearErrors } from '../../actions/error_actions';
+import { clearErrors } from '../../actions/error_session_actions';
 
 const mapStateToProps = (state) => ({ 
   todos: allTodos(state), 

@@ -28,7 +28,6 @@ class Greeting extends React.Component {
           <button onClick={this.goToSignUp}>SignUp</button>
           <button onClick={this.goToLogin}>Login</button>
           
-
         </nav>
       </div>
     )
