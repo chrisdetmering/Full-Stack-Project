@@ -1791,26 +1791,18 @@ var rootReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])(
 /*!****************************************!*\
   !*** ./frontend/reducers/selectors.js ***!
   \****************************************/
-/*! exports provided: allTodos, stepsByTodoId */
+/*! exports provided: allTodos */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "allTodos", function() { return allTodos; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "stepsByTodoId", function() { return stepsByTodoId; });
 var allTodos = function allTodos(_ref) {
   var todos = _ref.entities;
   return Object.keys(todos).map(function (id) {
     return todos[id];
   });
 };
-var stepsByTodoId = function stepsByTodoId(state, toDoId) {
-  var steps = state.steps;
-  return Object.values(steps).filter(function (step) {
-    return step.todo_id === toDoId;
-  });
-};
-window.stepsByTodoId = stepsByTodoId;
 
 /***/ }),
 
