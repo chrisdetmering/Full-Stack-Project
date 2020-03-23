@@ -4,7 +4,7 @@ import { uniqueId } from '../../util/util'
 class TodoForm extends React.Component { 
   constructor(props) { 
     super(props)
-    this.state = { title: "", body: "", done: false, tag_names: [] }
+    this.state = { title: "", body: "", done: false }
     this.props = props;
     this.updateProperty = this.updateProperty.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,7 +22,7 @@ class TodoForm extends React.Component {
 
  
   success() { 
-    this.setState({ title: "", body: "", tag_names: [] })
+    this.setState({ title: "", body: "" })
     this.props.clearErrors()
   }
 
@@ -34,7 +34,7 @@ class TodoForm extends React.Component {
   }
 
   render() { 
-    const errors = this.props.errors.sessions
+    const errors = this.props.errors.session
     const errorsList = errors.map((error, idx) =>  
         <li key={idx}>{error}</li>
       )

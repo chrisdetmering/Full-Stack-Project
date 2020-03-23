@@ -25,22 +25,22 @@ class ToDoList extends React.Component {
 
     return (
       <div>
+        <ol>
+          {todos.map((todo, idx) => (
+            <TodoListItem todo={todo} key={idx}
+              removeTodo={removeTodo}
+              receiveTodo={receiveTodo}
+              updateTodo={updateTodo}
+              deleteTodo={deleteTodo} />
+          ))}
+        </ol>
+
         <TodoForm 
           receiveTodo={receiveTodo} 
           createTodo={createTodo} 
           clearErrors={clearErrors}
           errors={errors}
         />
-
-        <ol>
-          {todos.map((todo, idx) => (
-            <TodoListItem todo={todo} key={idx}
-              removeTodo={removeTodo}
-              receiveTodo={receiveTodo} 
-              updateTodo={updateTodo}
-              deleteTodo={deleteTodo}/>
-          ))}
-        </ol>
       </div>
     )
   }
