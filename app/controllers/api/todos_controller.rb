@@ -9,7 +9,7 @@ class Api::TodosController < ApplicationController
     @todo = Todo.create(todo_params)
 
     if @todo.save!
-      render json: @todo, include: :tags
+      render json: @todo
     else 
       render json: @todo.errors.full_messages, status: 422
     end 
@@ -48,6 +48,6 @@ class Api::TodosController < ApplicationController
 
   private 
   def todo_params 
-    params.require(:todo).permit(:title, :body, :done, :id, :tag_names => [])
+    params.require(:todo).permit(:title, :body, :done, :id, :due)
   end 
 end
