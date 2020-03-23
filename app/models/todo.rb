@@ -1,17 +1,5 @@
-class Todo < ApplicationRecord 
-  attr_accessor :tag_names
-  
-  validates :title, :body, presence: true
+class Todo < ApplicationRecord  
+  validates :title, :body, :due, presence: true
   validates :done, inclusion: { in: [true, false] }
-
-  has_many :steps 
-  has_many :taggings 
-  has_many :tags, through: :taggings
-
-  def tag_names=(tag_names)
-    self.tags = tag_names.map do |tag_name|
-      Tag.find_or_create_by(name: tag_name)
-    end
-  end
 
 end 

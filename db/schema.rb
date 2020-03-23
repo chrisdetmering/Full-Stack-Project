@@ -10,26 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_10_185734) do
+ActiveRecord::Schema.define(version: 2020_03_23_222955) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "steps", force: :cascade do |t|
-    t.string "body", null: false
-    t.bigint "todo_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "taggings", force: :cascade do |t|
-    t.bigint "todo_id", null: false
-    t.bigint "tag_id", null: false
-  end
-
-  create_table "tags", force: :cascade do |t|
-    t.string "name", null: false
-  end
 
   create_table "todos", force: :cascade do |t|
     t.string "title", null: false
@@ -37,6 +21,8 @@ ActiveRecord::Schema.define(version: 2020_03_10_185734) do
     t.boolean "done", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "due", null: false
+    t.index ["due"], name: "index_todos_on_due"
   end
 
   create_table "users", force: :cascade do |t|
