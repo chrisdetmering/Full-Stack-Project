@@ -42,7 +42,7 @@ class TodoForm extends React.Component {
   }
 
   handleCancel() { 
-    this.props.toggleForm()
+    
   }
 
 

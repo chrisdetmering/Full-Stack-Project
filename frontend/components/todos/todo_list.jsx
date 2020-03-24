@@ -23,10 +23,11 @@ class ToDoList extends React.Component {
 
   render() { 
     var createTodo = this.props.createTodo;
+    var toggleForm = this.toggleForm
     var buttonOrForm = this.state.showForm ?
      <TodoForm 
-      createTodo={createTodo} 
-        toggleForm={this.toggleForm.bind(this)} /> : 
+     createTodo={createTodo}
+     toggleForm={toggleForm} /> : 
       <button 
       className="add-todo-btn"
       onClick={this.toggleForm}>+</button>
