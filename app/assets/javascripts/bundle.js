@@ -444,7 +444,13 @@ var ProjectsList = /*#__PURE__*/function (_React$Component) {
   _createClass(ProjectsList, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", null, "Navbar Here "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_todos_todo_list_container__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", null, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "project-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "project-list"
+      }, "Project List"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "todo-list"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_todos_todo_list_container__WEBPACK_IMPORTED_MODULE_1__["default"], null))));
     }
   }]);
 

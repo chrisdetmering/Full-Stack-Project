@@ -2,12 +2,15 @@ nav {
   border: 1px solid black; 
   display: flex; 
   justify-content: flex-end;
+  height: 50px;
 }
 
 embed { 
   width:600px; height: 600px;
 }
 
+
+/*Todos*/
 .todo-input { 
   height: 25px; width: 200px; 
   border: 0.5px solid lightgray; 
@@ -33,4 +36,23 @@ embed {
 a:hover { 
   text-decoration: underline;
   cursor: pointer;
+}
+
+
+/*project*/
+.project-container { 
+  display: flex; 
+  border: 1px solid black; 
+  justify-content: center;
+  height: 100%;
+}
+
+.project-list { 
+  border: 1px solid lightgreen;
+  width: 150px;
+}
+
+.todo-list { 
+  border: 1px solid lightgreen;
+  width: 500px; 
 }

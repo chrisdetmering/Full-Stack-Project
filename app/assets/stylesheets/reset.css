@@ -30,8 +30,12 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 
+html, body, div { 
+    height: 100%
+}
+
 body {
-	line-height: 1;
+    line-height: 1;
 }
 
 ol, ul {

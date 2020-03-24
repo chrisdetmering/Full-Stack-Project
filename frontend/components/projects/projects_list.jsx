@@ -10,9 +10,17 @@ class ProjectsList extends React.Component {
 
   render() { 
     return( 
-      <div>
-        <nav>Navbar Here </nav>
-        <ToDoListContainer /> 
+      <div >
+        <nav> </nav>
+        <section className="project-container">
+          <section className="project-list">
+              Project List
+          </section>
+          <section className="todo-list">
+            <ToDoListContainer /> 
+          </section>
+          
+        </section>
 
       </div>
     )
