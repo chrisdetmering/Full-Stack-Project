@@ -1,6 +1,8 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import DatePicker from "react-datepicker";
 import { uniqueId } from '../../util/util';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import "react-datepicker/dist/react-datepicker.css";
 
 class TodoForm extends React.Component { 
   constructor(props) { 
@@ -24,7 +26,7 @@ class TodoForm extends React.Component {
         <form>
           <label htmlFor="">ADD TODO</label>
           <br/>
-
+      
           <input 
             className="todo-input"
             type="text" 
@@ -32,13 +34,8 @@ class TodoForm extends React.Component {
             name="title"
             onChange={this.updateProperty}/>
 
-          <FontAwesomeIcon icon="coffee" />
-          <input 
-            type="text" 
-            placeholder="Note" 
-            name="body"
-            onChange={this.updateProperty}/>
-          <br/>
+          <DatePicker />
+
           <button>Add Todo</button>
         </form>
       </div>)

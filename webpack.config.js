@@ -18,7 +18,8 @@ module.exports = {
             presets: ['@babel/env', '@babel/react']
           }
         },
-      }
+      }, 
+      { test: /\.css$/, use: 'css-loader' }
     ]
   },
   devtool: 'source-map',
