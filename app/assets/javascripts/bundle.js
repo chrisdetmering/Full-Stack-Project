@@ -868,10 +868,11 @@ var TodoForm = /*#__PURE__*/function (_React$Component) {
     _this.state = {
       title: "",
       body: "",
-      due: "",
+      due: new Date(),
       done: false
     };
     _this.updateProperty = _this.updateProperty.bind(_assertThisInitialized(_this));
+    _this.handleDate = _this.handleDate.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -882,23 +883,32 @@ var TodoForm = /*#__PURE__*/function (_React$Component) {
       var name = e.target.name;
       var value = e.target.value;
       this.setState(_defineProperty({}, name, value));
+      console.log(this.state);
+    }
+  }, {
+    key: "handleDate",
+    value: function handleDate(date) {
+      this.setState({
+        due: date
+      });
+      console.log(this.state);
     }
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        htmlFor: ""
-      }, "ADD TODO"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "todo-input",
         type: "text",
         placeholder: "Todo",
         name: "title",
         onChange: this.updateProperty
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "datetime-local",
-        name: "due",
-        className: "date-input"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Add Todo")));
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_datepicker__WEBPACK_IMPORTED_MODULE_1___default.a, {
+        selected: this.state.due,
+        onChange: this.handleDate,
+        showTimeSelect: true
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.createTodo
+      }, "Add Todo")));
     }
   }]);
 

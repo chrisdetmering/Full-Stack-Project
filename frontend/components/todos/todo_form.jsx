@@ -7,8 +7,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 class TodoForm extends React.Component { 
   constructor(props) { 
     super(props)
-    this.state = { title: "", body: "", due: "", done: false }
+    this.state = { title: "", body: "", due: new Date(), done: false }
     this.updateProperty = this.updateProperty.bind(this);
+    this.handleDate = this.handleDate.bind(this);
   }
 
   
@@ -18,14 +19,20 @@ class TodoForm extends React.Component {
     var value = e.target.value; 
 
     this.setState({ [name]: value })
+    console.log(this.state)
   }
+
+  handleDate(date) {
+    this.setState({
+      due: date
+    });
+    console.log(this.state)
+  };
+
 
   render() {
     return (<div>
         <form>
-          <label htmlFor="">ADD TODO</label>
-          <br/>
-      
           <input 
             className="todo-input"
             type="text" 
@@ -33,13 +40,14 @@ class TodoForm extends React.Component {
             name="title"
             onChange={this.updateProperty}/>
 
-          <input 
-            type="datetime-local" 
-            name="due" className="date-input"/>
+            <DatePicker 
+            selected={this.state.due}
+            onChange={this.handleDate}
+            showTimeSelect/>
 
           
           <br/>
-          <button>Add Todo</button>
+          <button onClick={this.createTodo}>Add Todo</button>
         </form>
       </div>)
   }

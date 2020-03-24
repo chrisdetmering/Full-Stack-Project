@@ -14,3 +14,6 @@ embed {
   border-radius: 2px;
 }
 
+.datetime-input { 
+  height: 25px; 
+}
