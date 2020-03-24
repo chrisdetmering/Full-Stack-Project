@@ -887,6 +887,7 @@ var TodoForm = /*#__PURE__*/function (_React$Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         htmlFor: ""
       }, "ADD TODO"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "todo-input",
         type: "text",
         placeholder: "Todo",
         name: "title",
@@ -896,7 +897,7 @@ var TodoForm = /*#__PURE__*/function (_React$Component) {
         placeholder: "Note",
         name: "body",
         onChange: this.updateProperty
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "+")));
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Add Todo")));
     }
   }]);
 

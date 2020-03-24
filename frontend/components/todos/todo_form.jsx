@@ -24,6 +24,7 @@ class TodoForm extends React.Component {
           <br/>
 
           <input 
+            className="todo-input"
             type="text" 
             placeholder="Todo" 
             name="title"
@@ -34,8 +35,8 @@ class TodoForm extends React.Component {
             placeholder="Note" 
             name="body"
             onChange={this.updateProperty}/>
-
-          <button>+</button>
+          <br/>
+          <button>Add Todo</button>
         </form>
       </div>)
   }
