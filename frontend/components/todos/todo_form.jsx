@@ -35,7 +35,6 @@ class TodoForm extends React.Component {
             name="body"
             onChange={this.updateProperty}/>
 
-
           <button>+</button>
         </form>
       </div>)
