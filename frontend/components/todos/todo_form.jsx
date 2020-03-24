@@ -1,5 +1,6 @@
-import React from 'react'
-import { uniqueId } from '../../util/util'
+import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { uniqueId } from '../../util/util';
 
 class TodoForm extends React.Component { 
   constructor(props) { 
@@ -8,6 +9,7 @@ class TodoForm extends React.Component {
     this.updateProperty = this.updateProperty.bind(this);
   }
 
+  
   updateProperty(e) { 
     e.preventDefault(); 
     var name = e.target.name; 
@@ -30,6 +32,7 @@ class TodoForm extends React.Component {
             name="title"
             onChange={this.updateProperty}/>
 
+          <FontAwesomeIcon icon="coffee" />
           <input 
             type="text" 
             placeholder="Note" 
