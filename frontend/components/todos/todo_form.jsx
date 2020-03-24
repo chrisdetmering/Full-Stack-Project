@@ -1,5 +1,4 @@
 import React from 'react'
-import Datetime from 'react-datetime';
 import { uniqueId } from '../../util/util'
 
 class TodoForm extends React.Component { 
@@ -36,7 +35,6 @@ class TodoForm extends React.Component {
             name="body"
             onChange={this.updateProperty}/>
 
-          <Datetime />
 
           <button>+</button>
         </form>
