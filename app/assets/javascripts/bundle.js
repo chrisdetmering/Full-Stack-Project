@@ -829,8 +829,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_datepicker__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-datepicker */ "./node_modules/react-datepicker/dist/react-datepicker.min.js");
 /* harmony import */ var react_datepicker__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_datepicker__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _util_util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../util/util */ "./frontend/util/util.js");
-/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -855,7 +854,6 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-
 var TodoForm = /*#__PURE__*/function (_React$Component) {
   _inherits(TodoForm, _React$Component);
 
@@ -873,6 +871,8 @@ var TodoForm = /*#__PURE__*/function (_React$Component) {
     };
     _this.updateProperty = _this.updateProperty.bind(_assertThisInitialized(_this));
     _this.handleDate = _this.handleDate.bind(_assertThisInitialized(_this));
+    _this.createTodo = _this.createTodo.bind(_assertThisInitialized(_this));
+    _this.handleCancel = _this.handleCancel.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -894,6 +894,27 @@ var TodoForm = /*#__PURE__*/function (_React$Component) {
       console.log(this.state);
     }
   }, {
+    key: "createTodo",
+    value: function createTodo(e) {
+      e.preventDefault();
+      this.props.createTodo(this.state).then(function (todo) {
+        return console.log(todo);
+      }, function (error) {
+        return console.log(error);
+      });
+      this.setState({
+        title: "",
+        body: "",
+        due: new Date(),
+        done: false
+      });
+    }
+  }, {
+    key: "handleCancel",
+    value: function handleCancel() {
+      this.props.toggleForm();
+    }
+  }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -901,14 +922,17 @@ var TodoForm = /*#__PURE__*/function (_React$Component) {
         type: "text",
         placeholder: "Todo",
         name: "title",
-        onChange: this.updateProperty
+        onChange: this.updateProperty,
+        value: this.state.title
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_datepicker__WEBPACK_IMPORTED_MODULE_1___default.a, {
         selected: this.state.due,
         onChange: this.handleDate,
         showTimeSelect: true
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.createTodo
-      }, "Add Todo")));
+      }, "Add Todo"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        onClick: this.handleCancel
+      }, "Cancel")));
     }
   }]);
 
@@ -942,9 +966,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -964,6 +988,10 @@ var ToDoList = /*#__PURE__*/function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ToDoList).call(this, props));
     _this.props = props;
+    _this.state = {
+      showForm: false
+    };
+    _this.toggleForm = _this.toggleForm.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -973,15 +1001,31 @@ var ToDoList = /*#__PURE__*/function (_React$Component) {
       this.props.fetchTodos();
     }
   }, {
+    key: "toggleForm",
+    value: function toggleForm(e) {
+      e.preventDefault();
+      this.setState({
+        showForm: true
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
+      var createTodo = this.props.createTodo;
+      var buttonOrForm = this.state.showForm ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_todo_form__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        createTodo: createTodo,
+        toggleForm: this.toggleForm.bind(this)
+      }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "add-todo-btn",
+        onClick: this.toggleForm
+      }, "+");
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", null, this.props.todos.map(function (todo) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: todo.id
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_todo_list_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           todo: todo
         }));
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_todo_form__WEBPACK_IMPORTED_MODULE_2__["default"], null));
+      })), buttonOrForm);
     }
   }]);
 
@@ -1098,13 +1142,13 @@ var TodoListItem = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       var todo = this.props.todo;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        className: ""
-      }, todo.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        className: ""
-      }, "due date"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        className: "todo-item"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "checkbox"
-      }));
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: ""
+      }, todo.title));
     }
   }]);
 
@@ -1539,22 +1583,6 @@ var deleteTodo = function deleteTodo(todo) {
     url: "/api/todos/".concat(todo.id)
   });
 };
-
-/***/ }),
-
-/***/ "./frontend/util/util.js":
-/*!*******************************!*\
-  !*** ./frontend/util/util.js ***!
-  \*******************************/
-/*! exports provided: uniqueId */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "uniqueId", function() { return uniqueId; });
-function uniqueId() {
-  return new Date().getTime();
-}
 
 /***/ }),
 

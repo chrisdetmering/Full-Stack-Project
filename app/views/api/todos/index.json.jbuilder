@@ -1,1 +1,1 @@
-json.array! @todos, :id, :title
+json.array! @todos, :id, :title, :due

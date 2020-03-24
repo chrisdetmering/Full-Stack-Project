@@ -17,3 +17,20 @@ embed {
 .datetime-input { 
   height: 25px; 
 }
+
+.todo-item { 
+  display: inline-flex; 
+  width: 100px; 
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.add-todo-btn { 
+  border: none; 
+  color: red
+}
+
+a:hover { 
+  text-decoration: underline;
+  cursor: pointer;
+}
