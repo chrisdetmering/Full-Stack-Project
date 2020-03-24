@@ -2,7 +2,7 @@ import React from 'react';
 import DatePicker from "react-datepicker";
 import { uniqueId } from '../../util/util';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import "react-datepicker/dist/react-datepicker.css";
+
 
 class TodoForm extends React.Component { 
   constructor(props) { 
@@ -18,7 +18,6 @@ class TodoForm extends React.Component {
     var value = e.target.value; 
 
     this.setState({ [name]: value })
-    console.log(this.state)
   }
 
   render() {
@@ -34,8 +33,12 @@ class TodoForm extends React.Component {
             name="title"
             onChange={this.updateProperty}/>
 
-          <DatePicker />
+          <input 
+            type="datetime-local" 
+            name="due" className="date-input"/>
 
+          
+          <br/>
           <button>Add Todo</button>
         </form>
       </div>)

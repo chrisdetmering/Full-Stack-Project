@@ -5,6 +5,8 @@ import { Root } from './components/root';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { faCommentAlt } from '@fortawesome/free-solid-svg-icons';
+import "react-datepicker/dist/react-datepicker.css";
+
 
 library.add(fab, faCommentAlt)
 

@@ -34,6 +34,7 @@
   },
   "devDependencies": {
     "@types/react-redux": "^7.1.7",
-    "css-loader": "^3.4.2"
+    "css-loader": "^3.4.2",
+    "style-loader": "^1.1.3"
   }
 }
